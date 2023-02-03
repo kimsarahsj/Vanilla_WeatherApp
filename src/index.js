@@ -49,12 +49,21 @@ function displayTemperature(response) {
     response.data.wind.speed
   )} km/h`;
 }
-let apiKey = "fc1b832b8095ff408d9652d0tb44f7oa";
-//let query = document.querySelector("#city");
-//query.innerHTML = `${city}`;
-let query = "Atlanta";
-let encoded = encodeURI(query);
-let url = `https://api.shecodes.io/weather/v1/current?query=${encoded}&key=${apiKey}&units=metric`;
 
-axios.get(url).then(displayTemperature);
 //let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}`;
+function search(city) {
+  let apiKey = "fc1b832b8095ff408d9652d0tb44f7oa";
+  let encoded = encodeURI(city);
+  let url = `https://api.shecodes.io/weather/v1/current?query=${encoded}&key=${apiKey}&units=metric`;
+  axios.get(url).then(displayTemperature);
+}
+search("New York"); //search on load
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
