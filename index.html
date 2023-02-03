@@ -11,11 +11,13 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/styles.css" />
     <script
       src="https://kit.fontawesome.com/053d005e8b.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+
     <title>Weather</title>
   </head>
   <body>
@@ -23,23 +25,24 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>New York</h1>
+            <h1 id="city">New York</h1>
             <ul>
-              <li>Thursday 05:00 PM</li>
-              <li>Clear</li>
+              <li>
+                <span id="day">Thursday</span> <span id="hour">05</span>:<span
+                  id="minute"
+                  >00</span
+                >
+              </li>
+              <li id="description">Clear</li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-temperature">
                 <!--This flexbox allows everything to be in a line-->
-                <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                  alt="clear"
-                  class="float-left"
-                />
+                <img src="" alt="clear" class="float-left" id="icon" />
                 <div class="float-left">
-                  <strong>12</strong
+                  <strong id="temperature">12</strong
                   ><span class="units"
                     >°C | <a style="text-decoration: none" href="#">°F</a></span
                   >
@@ -49,9 +52,9 @@
 
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 70%</li>
-                <li>Wind Speed: 2 km/h</li>
+                <li id="precip">Precipitation: 0%</li>
+                <li id="humidity">Humidity: 70%</li>
+                <li id="wind-speed">Wind Speed: 2 km/h</li>
               </ul>
             </div>
           </div>

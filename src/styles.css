@@ -24,6 +24,10 @@ li {
   font-weight: 100;
   line-height: 19px;
   text-align: left;
+  text-transform: capitalize;
+}
+#minute {
+  text-transform: uppercase;
 }
 .weather-app-wrapper {
   max-width: 600px;
