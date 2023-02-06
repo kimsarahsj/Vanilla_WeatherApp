@@ -34,6 +34,8 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
 
+  celsiusTemperature = response.data.temperature.current; //storing the current temp
+
   cityElement.innerHTML = response.data.city;
   iconElement.setAttribute(
     "src",
@@ -67,3 +69,34 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+//Farenheit coversion
+
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  //add or remove active class
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  //add or remove active class
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null; //global variable that can be accessed by other functions
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+// end
