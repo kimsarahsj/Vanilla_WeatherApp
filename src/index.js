@@ -1,5 +1,4 @@
 let now = new Date();
-
 let todayDay = document.querySelector("#day");
 let days = [
   "sunday",
@@ -12,7 +11,6 @@ let days = [
 ];
 let day = days[now.getDay()];
 todayDay.innerHTML = `${day}`;
-
 let todayHour = document.querySelector("#hour");
 let hours = now.getHours();
 let ampm = "am";
@@ -21,10 +19,40 @@ if (hours > 12) {
   hours = hours - 12;
 }
 todayHour.innerHTML = `${hours}`;
-
 let todayMinute = document.querySelector("#minute");
 let minutes = now.getMinutes();
 todayMinute.innerHTML = `${minutes} ${ampm}`;
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"]; //array of days
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    //for each day inject a new column of html
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`; //close the div for class "row"
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 
 function displayTemperature(response) {
   let cityElement = document.querySelector("#city");
@@ -59,6 +87,7 @@ function search(city) {
 }
 
 search("New York"); //search on load
+displayForecast();
 
 function handleSubmit(event) {
   event.preventDefault();

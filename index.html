@@ -42,15 +42,15 @@
                   class="btn btn-primary w-100"
                 />
               </div>
-          </div>
+            </div>
           </form>
           <div class="overview">
             <input
-                type="button"
-                value="current location"
-                class="btn btn-light"
-                id="locationBtn"
-                />
+              type="button"
+              value="current location"
+              class="btn btn-light"
+              id="locationBtn"
+            />
             <div class="line-break"></div>
             <h1 id="city">New York</h1>
             <ul>
@@ -96,38 +96,24 @@
               </ul>
             </div>
           </div>
-          <div class="weather-forecast">
-            <div class="row">
-              
-<div class="col-3">
-                <div class="weather-forecast-date">Wednesday</div>
-                <img
-                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
-                  alt="mist"
-                  width="42"
-                />
-                <div class="weather-forecast-temperature">
-                  <span class="weather-forecast-temperature-max"> 18° </span>/
-                  <span class="weather-forecast-temperature-min">12° </span>
-                </div>
-              </div>
-<!--Keep one version of the forecast code and use JS to inject the other days-->
-              </div>
+          <div class="weather-forecast" id="forecast">
+            
+              <!--Keep one version of the forecast code and use JS to inject the other days-->
             </div>
           </div>
         </div>
-        <small>
-          <a
-            href="https://github.com/kimsarahsj/Vanilla_WeatherApp.git"
-            target="_blank"
-            style="text-decoration: none"
-          >
-            Open-sourced</a
-          >
-          <!--target blank opens link in new tab-->
-          code by Sarah Kim
-        </small>
       </div>
+      <small>
+        <a
+          href="https://github.com/kimsarahsj/Vanilla_WeatherApp.git"
+          target="_blank"
+          style="text-decoration: none"
+        >
+          Open-sourced</a
+        >
+        <!--target blank opens link in new tab-->
+        code by Sarah Kim
+      </small>
     </div>
     <script src="src/index.js"></script>
   </body>
