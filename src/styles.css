@@ -26,8 +26,23 @@ li {
   text-align: left;
   text-transform: capitalize;
 }
+small {
+  display: block;
+  text-align: center;
+}
 #minute {
   text-transform: uppercase;
+}
+.overview .btn-light {
+  color: gray;
+  border-width: 2px;
+  height: 30px;
+  font-size: x-small;
+  text-align: center;
+}
+.line-break {
+  display: block;
+  margin-bottom: 0.5em;
 }
 .weather-app-wrapper {
   max-width: 600px;
