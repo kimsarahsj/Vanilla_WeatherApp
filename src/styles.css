@@ -98,3 +98,7 @@ small {
   color: rgb(88, 88, 88);
   opacity: 0.8;
 }
+.weather-forecast-daily {
+  display: block;
+  margin: 0 auto;
+}
