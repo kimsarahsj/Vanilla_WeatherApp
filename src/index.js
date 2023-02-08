@@ -11,6 +11,7 @@ let days = [
 ];
 let day = days[now.getDay()];
 todayDay.innerHTML = `${day}`;
+
 let todayHour = document.querySelector("#hour");
 let hours = now.getHours();
 let ampm = "am";
@@ -23,7 +24,8 @@ let todayMinute = document.querySelector("#minute");
 let minutes = now.getMinutes();
 todayMinute.innerHTML = `${minutes} ${ampm}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"]; //array of days
@@ -37,7 +39,7 @@ function displayForecast() {
       <div class="col-2">
         <div class="weather-forecast-date">${day}</div>
         <img
-          src="http://openweathermap.org/img/wn/50d@2x.png"
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
           alt=""
           width="42"
         />
@@ -51,7 +53,14 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`; //close the div for class "row"
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+}
+
+function getForecast(city) {
+  console.log(city);
+  let apiKey = "fc1b832b8095ff408d9652d0tb44f7oa";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -76,6 +85,7 @@ function displayTemperature(response) {
   windSpeedElement.innerHTML = `Wind Speed ${Math.round(
     response.data.wind.speed
   )} km/h`;
+  getForecast(response.data.city);
 }
 
 //let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}`;
@@ -87,7 +97,6 @@ function search(city) {
 }
 
 search("New York"); //search on load
-displayForecast();
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -105,6 +114,7 @@ function showPosition(position) {
   let units = "metric";
   let apiKey = "fc1b832b8095ff408d9652d0tb44f7oa";
   let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+  console.log(url);
   axios.get(url).then(displayTemperature);
 }
 
@@ -140,4 +150,3 @@ let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-// end
